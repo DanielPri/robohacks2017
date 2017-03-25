@@ -1,16 +1,20 @@
-int RED = 7;
-int YELLOW = 4;
-int GREEN = 5;
-int timer = 500;
+#include <dht.h>
 
-void setup() {
-  pinMode(RED,LOW);
-  pinMode(YELLOW,LOW);
-  pinMode(GREEN,LOW);
+dht DHT;
+
+#define DHT11_PIN 7
+
+void setup(){
+  Serial.begin(9600);
 }
 
-void loop() {
-  
-  digitalWrite(RED,LOW);
-  
+void loop()
+{
+  float chk = DHT.read11(DHT11_PIN);
+  Serial.print("Temperature = ");
+  Serial.println(DHT.temperature);
+  Serial.print("Humidity = ");
+  Serial.println(DHT.humidity);
+  delay(1000);
 }
+
